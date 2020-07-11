@@ -1,0 +1,25 @@
+@charset 'UTF-8';
+
+// Modules
+// @import 'modules/common';
+
+.v-toolbar__title{
+  .toolbar-title {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.text-white{
+  color: white;
+}
+
+.text-center{
+  text-align: center;
+}
+
+.box-align-center{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
