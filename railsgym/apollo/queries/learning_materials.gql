@@ -1,0 +1,10 @@
+query {
+  learningMaterials {
+    id
+    title
+    url
+    technology{
+      id
+    }
+  }
+}

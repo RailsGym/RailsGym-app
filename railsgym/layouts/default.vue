@@ -5,9 +5,11 @@
       flat
       tile
     >
-      <v-toolbar dense>
+      <v-toolbar dense class="primary" :dark="true">
         <v-app-bar-nav-icon />
-        <v-toolbar-title v-text="title" />
+        <v-toolbar-title>
+          <router-link to="/" class="toolbar-title" v-text="title" />
+        </v-toolbar-title>
         <v-spacer />
         <v-btn icon>
           <v-icon>mdi-magnify</v-icon>
@@ -25,9 +27,9 @@
     <v-content>
       <nuxt />
     </v-content>
-    <v-footer center>
+    <v-footer center class="primary">
       <v-layout justify-center>
-        <span>&copy; RailsGym. All Rights Reserved.</span>
+        <span class="text-white">&copy; RailsGym. All Rights Reserved.</span>
       </v-layout>
     </v-footer>
   </v-app>
