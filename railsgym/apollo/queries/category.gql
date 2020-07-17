@@ -1,0 +1,10 @@
+query {
+  category(id: 1) {
+    id,
+    name,
+    items {
+      id,
+      title
+    }
+  }
+}
