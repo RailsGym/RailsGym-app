@@ -17,8 +17,7 @@
       <div>
         <img
           src="~/assets/img/about.png"
-          width="400"
-        >
+          width="400">
       </div>
     </v-col>
   </v-row>
