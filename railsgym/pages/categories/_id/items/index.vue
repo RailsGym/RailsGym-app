@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>教材一覧 {{ category.name }}</p>
+    <v-btn color="orange">投稿する</v-btn>
     <v-col v-for="item in category.items" :key="item.id">
       <p>{{ item.title }}</p>
     </v-col>
