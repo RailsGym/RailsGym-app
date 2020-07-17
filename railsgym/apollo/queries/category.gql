@@ -1,5 +1,5 @@
-query {
-  category(id: 1) {
+query($id: Int!) {
+  category(id: $id) {
     id,
     name,
     items {
