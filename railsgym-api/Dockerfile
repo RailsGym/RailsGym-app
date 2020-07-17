@@ -37,7 +37,6 @@ WORKDIR $APP_HOME
 ENV GEM_HOME=/bundle
 
 ADD Gemfile* $APP_HOME/
-ADD Gemfile.lock* $APP_HOME/
 
 ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
   BUNDLE_JOBS=4 \
