@@ -2,6 +2,7 @@ import colors from 'vuetify/es5/util/colors'
 
 export default {
   mode: 'spa',
+  telemetry: false,
   /*
   ** Headers of the page
   */
@@ -77,6 +78,15 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+      // Run ESLint on save
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
     }
   },
   apollo: {
@@ -85,8 +95,5 @@ export default {
         httpEndpoint: 'http://localhost:8080/graphql' // API側へのアクセスするポイントを指定。
       }
     }
-  },
-  server: {
-    port: 3000
   }
 }
