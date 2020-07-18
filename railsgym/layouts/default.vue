@@ -21,11 +21,12 @@
         <v-btn icon>
           <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
+        <span v-if="loggedIn" @click="logout()">ログアウト</span>
       </v-toolbar>
     </v-card>
-    <v-content>
+    <v-main>
       <nuxt />
-    </v-content>
+    </v-main>
     <v-footer center class="primary">
       <v-layout justify-center>
         <span class="text-white">&copy; RailsGym. All Rights Reserved.</span>
@@ -39,6 +40,22 @@ export default {
   data () {
     return {
       title: 'RailsGym'
+    }
+  },
+  computed: {
+    loggedIn () {
+      return this.$auth.loggedIn
+    }
+  },
+  methods: {
+    async logout () {
+      try {
+        await this.$auth.logout()
+        await this.$apolloHelpers.onLogout()
+        this.$router.push('/login')
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }

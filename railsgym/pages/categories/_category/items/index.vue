@@ -21,7 +21,9 @@
       outlined
       nuxt>
       <v-card-text>
-        <p right>{{ ymdhms(item.createdAt) }}</p>
+        <p>
+          {{ ymdhms(item.createdAt) }}
+        </p>
         <h3>{{ item.title }}</h3>
       </v-card-text>
     </v-card>
@@ -32,6 +34,7 @@
 import category from '~/apollo/queries/category'
 
 export default {
+  middleware: 'auth',
   data () {
     return {
       category: {}

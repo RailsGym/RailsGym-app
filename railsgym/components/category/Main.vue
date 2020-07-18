@@ -6,7 +6,10 @@
 
     <v-row align-content="center">
       <v-col v-for="category in categories" :key="category.id" cols="4">
-        <v-btn class="category-box" :href="'categories/' + category.id + '/items'">
+        <v-btn
+          class="category-box"
+          nuxt
+          :to="{ name: 'categories-category-items', params: { category: category.id }}">
           {{ category.name }}
         </v-btn>
       </v-col>
