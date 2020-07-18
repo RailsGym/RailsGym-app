@@ -1,18 +1,18 @@
 <template>
   <v-container>
     <Introduction />
-    <Technologies />
+    <Categories />
   </v-container>
 </template>
 
 <script>
 import Introduction from '@/components/top/Introduction'
-import Technologies from '@/components/technology/Main'
+import Categories from '@/components/category/Main'
 
 export default {
   components: {
     Introduction,
-    Technologies
+    Categories
   }
 }
 </script>
