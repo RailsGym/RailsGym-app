@@ -5,17 +5,17 @@ module Types
       Task.all
     end
 
-    field :technologies, [Types::TechnologyType], null: false, description: '技術一覧を全件取得する'
-    def technologies
-      Technology.all
+    field :categories, [Types::CategoryType], null: false, description: '技術一覧を全件取得する'
+    def categories
+      Category.all
     end
 
-    field :learning_materials, [Types::LearningMaterialType], null: false, description: '選択した技術の教材一覧を取得する'
-    def learning_materials
-      p "■■■■■■■■■■■■■■■■■■■■■"
-      p "■■■■■■■■■■■■■■■■■■■■■"
-      p "■■■■■■■■■■■■■■■■■■■■■"
-      LearningMaterial.where(technology_id: technologyId)
+    field :category, Types::CategoryType, null: false do
+      description '技術'
+      argument :id, Int, required: true, description: 'カテゴリID'
+    end
+    def category(id:)
+      Category.find(id)
     end
   end
 end
