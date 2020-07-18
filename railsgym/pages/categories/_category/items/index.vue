@@ -17,7 +17,7 @@
       v-for="item in category.items"
       :key="item.id"
       :to="{ name: 'categories-category-items-id', params: { category: $route.params.category, id: item.id }}"
-      class="mb-12"
+      class="mb-6"
       outlined
       nuxt>
       <v-card-text>
