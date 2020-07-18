@@ -1,5 +1,5 @@
 query {
-  technologies {
+  categories {
     id
     name
   }
