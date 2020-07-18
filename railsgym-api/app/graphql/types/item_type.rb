@@ -1,7 +1,7 @@
 module Types
-  class LearningMaterialType < Types::BaseObject
+  class ItemType < Types::BaseObject
     field :id, ID, null: false
-    field :technologyId, [Types::TechnologyType], null: true
+    field :category, Types::CategoryType, null: false
     field :title, String, null: false
     field :url, String, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
