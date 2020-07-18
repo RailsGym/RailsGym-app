@@ -32,6 +32,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    'plugins/application',
     'plugins/vuetify'
   ],
   /*
@@ -41,7 +42,8 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
-    '@nuxtjs/apollo'
+    '@nuxtjs/apollo',
+    ['@nuxtjs/moment', ['ja']],
   ],
   /*
   ** Nuxt.js modules

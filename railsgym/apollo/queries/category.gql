@@ -4,7 +4,8 @@ query($id: Int!) {
     name,
     items {
       id,
-      title
+      title,
+      createdAt
     }
   }
 }
