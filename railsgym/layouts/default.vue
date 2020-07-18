@@ -3,8 +3,7 @@
     <v-card
       color="grey lighten-4"
       flat
-      tile
-    >
+      tile>
       <v-toolbar dense class="primary" :dark="true">
         <v-app-bar-nav-icon />
         <v-toolbar-title>

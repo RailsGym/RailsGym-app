@@ -1,0 +1,59 @@
+<template>
+  <v-container>
+    <h2>「{{ category.name }}」 教材一覧</h2>
+    <div class="d-flex flex-row-reverse mb-6">
+      <v-btn
+        :to="{ name: 'categories-category-items-new', params: { category: $route.params.category }}"
+        color="orange"
+        nuxt
+        dark>
+        投稿する
+        <v-icon dark right>
+          mdi-plus
+        </v-icon>
+      </v-btn>
+    </div>
+    <v-card
+      v-for="item in category.items"
+      :key="item.id"
+      :to="{ name: 'categories-category-items-id', params: { category: $route.params.category, id: item.id }}"
+      class="mb-6"
+      outlined
+      nuxt>
+      <v-card-text>
+        <p right>{{ ymdhms(item.createdAt) }}</p>
+        <h3>{{ item.title }}</h3>
+      </v-card-text>
+    </v-card>
+  </v-container>
+</template>
+
+<script>
+import category from '~/apollo/queries/category'
+
+export default {
+  data () {
+    return {
+      category: {}
+    }
+  },
+  async created () {
+    await this.fetchCategory(this.$route.params.category)
+  },
+  methods: {
+    async fetchCategory (categoryId) {
+      try {
+        const res = await this.$apollo.query({
+          query: category,
+          variables: {
+            id: parseInt(categoryId, 10)
+          }
+        })
+        this.category = res.data.category
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  }
+}
+</script>
