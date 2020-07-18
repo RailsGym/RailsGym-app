@@ -21,7 +21,9 @@
       outlined
       nuxt>
       <v-card-text>
-        <p right>{{ ymdhms(item.createdAt) }}</p>
+        <p right>
+          {{ ymdhms(item.createdAt) }}
+        </p>
         <h3>{{ item.title }}</h3>
       </v-card-text>
     </v-card>

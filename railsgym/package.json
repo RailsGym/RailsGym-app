@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.1-rc.1",
+    "@nuxtjs/toast": "^3.2.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "graphql-tag": "^2.10.3",
     "nuxt": "^2.0.0"
