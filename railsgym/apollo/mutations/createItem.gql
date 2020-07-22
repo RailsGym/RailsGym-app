@@ -1,0 +1,14 @@
+mutation($title: String!, $url: String!, $categoryId: ID!) {
+  createItem(
+    input:{
+      categoryId: $categoryId,
+      title: $title,
+      url: $url
+    }
+  ){
+    item {
+      title
+      url
+    }
+  }
+}
