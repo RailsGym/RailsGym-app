@@ -1,12 +1,11 @@
 class GraphqlController < ApplicationController
-  before_action :authenticate_user
   # If accessing from outside this domain, nullify the session
   # This allows for outside API access while preventing CSRF attacks,
   # but you'll have to authenticate your user separately
   # protect_from_forgery with: :null_session
 
   def execute
-    variables = ensure_hash(params[:variables])
+    variables = ensure_hash(params[:variables].merge(userId: current_user&.id))
     query = params[:query]
     operation_name = params[:operationName]
     context = {

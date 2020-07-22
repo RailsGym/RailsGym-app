@@ -21,7 +21,12 @@
         <v-btn icon>
           <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
-        <span v-if="loggedIn" @click="logout()">ログアウト</span>
+        <div v-if="loggedIn">
+          <span @click="logout()">ログアウト</span>
+        </div>
+        <div v-else>
+          <span @click="redirectLogin()">ログイン</span>
+        </div>
       </v-toolbar>
     </v-card>
     <v-main>
@@ -52,10 +57,14 @@ export default {
       try {
         await this.$auth.logout()
         await this.$apolloHelpers.onLogout()
+        this.$toast.info('ログアウトしました')
         this.$router.push('/login')
       } catch (e) {
         console.log(e)
       }
+    },
+    redirectLogin () {
+      this.$router.push('/login')
     }
   }
 }

@@ -5,6 +5,7 @@ module Mutations
     field :item, Types::ItemType, null: true
     field :result, Boolean, null: true
 
+    argument :user_id, ID, required: true
     argument :category_id, ID, required: true
     argument :title, String, required: true
     argument :url, String, required: true
@@ -12,6 +13,7 @@ module Mutations
     def resolve(**args)
       category = Category.find(args[:category_id])
       item = category.items.build(
+        user_id: args[:user_id],
         title: args[:title],
         url: args[:url],
       )
