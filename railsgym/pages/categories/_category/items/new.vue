@@ -29,6 +29,7 @@
 import createItem from '~/apollo/mutations/createItem'
 
 export default {
+  middleware: 'auth',
   data () {
     return {
       newItem: {

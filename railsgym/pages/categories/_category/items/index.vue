@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h2>「{{ category.name }}」 教材一覧</h2>
-    <div class="d-flex flex-row-reverse mb-6">
+    <div v-if="$auth.loggedIn" class="d-flex flex-row-reverse mb-6">
       <v-btn
         :to="{ name: 'categories-category-items-new', params: { category: $route.params.category }}"
         color="orange"
@@ -17,7 +17,7 @@
       v-for="item in category.items"
       :key="item.id"
       :to="{ name: 'categories-category-items-id', params: { category: $route.params.category, id: item.id }}"
-      class="mb-6"
+      class="mt-6"
       outlined
       nuxt>
       <v-card-text>
@@ -34,7 +34,6 @@
 import category from '~/apollo/queries/category'
 
 export default {
-  middleware: 'auth',
   data () {
     return {
       category: {}
