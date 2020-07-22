@@ -22,10 +22,22 @@
           <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
         <div v-if="loggedIn">
-          <span @click="logout()">ログアウト</span>
+          <v-btn
+            color="white"
+            text
+            dark
+            @click="logout()">
+            ログアウト
+          </v-btn>
         </div>
         <div v-else>
-          <span @click="redirectLogin()">ログイン</span>
+          <v-btn
+            color="white"
+            text
+            dark
+            @click="redirectLogin()">
+            ログイン
+          </v-btn>
         </div>
       </v-toolbar>
     </v-card>
