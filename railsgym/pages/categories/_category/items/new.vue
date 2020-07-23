@@ -9,6 +9,7 @@
     </nuxt-link>
     <v-form>
       <v-container class="mt-10">
+        <Errors :errors="errors" />
         <v-row>
           <v-col cols="12">
             <v-text-field v-model="newItem.title" label="教材名" required />
@@ -30,21 +31,27 @@
 </template>
 
 <script>
+import Errors from '@/components/shared/Errors'
 import createItem from '~/apollo/mutations/createItem'
 
 export default {
+  middleware: 'auth',
+  components: {
+    Errors
+  },
   data () {
     return {
       newItem: {
         title: '',
         url: ''
-      }
+      },
+      errors: []
     }
   },
   methods: {
     async createItem (Item) {
       try {
-        await this.$apollo.mutate({
+        const res = await this.$apollo.mutate({
           mutation: createItem,
           variables: {
             title: Item.title,
@@ -52,8 +59,12 @@ export default {
             categoryId: this.$route.params.category
           }
         })
-        this.$toast.info('教材が追加されました。')
-        this.$router.go(-1)
+        if (res.data.createItem.errors.length !== 0) {
+          this.errors = res.data.createItem.errors
+        } else {
+          this.$toast.info('教材が追加されました。')
+          this.$router.go(-1)
+        }
       } catch (e) {
         window.console.log(e)
       }

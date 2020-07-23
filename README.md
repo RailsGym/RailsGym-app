@@ -24,6 +24,16 @@ $ make init
 ```
 $ make up
 ```
+### ログイン
+
+seedsファイルにて下記のユーザーが作成されます。
+```
+メールアドレス: yamada@example.com
+パスワード: password0801
+
+メールアドレス: tanaka@example.com
+パスワード: password0801
+```
 
 ### フロント側
 http://localhost:3000/

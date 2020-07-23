@@ -44,6 +44,8 @@ export default {
     '@nuxtjs/vuetify',
     '@nuxtjs/apollo',
     ['@nuxtjs/moment', ['ja']],
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
   /*
   ** Nuxt.js modules
@@ -52,7 +54,20 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/toast'
   ],
-
+  axios: {
+    baseURL: 'http://localhost:3000/'
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'user_token', method: 'post', propertyName: 'jwt' },
+          user: false,
+          logout: false
+        }
+      }
+    }
+  },
   toast: {
     position: 'top-right',
     duration: 3000
@@ -101,7 +116,8 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: 'http://localhost:8080/graphql' // API側へのアクセスするポイントを指定。
+        httpEndpoint: 'http://localhost:8080/graphql', // API側へのアクセスするポイントを指定。
+        getAuth: () => ''
       }
     }
   }

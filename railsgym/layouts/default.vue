@@ -21,6 +21,24 @@
         <v-btn icon>
           <v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
+        <div v-if="loggedIn">
+          <v-btn
+            color="white"
+            text
+            dark
+            @click="logout()">
+            ログアウト
+          </v-btn>
+        </div>
+        <div v-else>
+          <v-btn
+            color="white"
+            text
+            dark
+            @click="redirectLogin()">
+            ログイン
+          </v-btn>
+        </div>
       </v-toolbar>
     </v-card>
     <v-main>
@@ -39,6 +57,26 @@ export default {
   data () {
     return {
       title: 'RailsGym'
+    }
+  },
+  computed: {
+    loggedIn () {
+      return this.$auth.loggedIn
+    }
+  },
+  methods: {
+    async logout () {
+      try {
+        await this.$auth.logout()
+        await this.$apolloHelpers.onLogout()
+        this.$toast.info('ログアウトしました')
+        this.$router.push('/login')
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    redirectLogin () {
+      this.$router.push('/login')
     }
   }
 }

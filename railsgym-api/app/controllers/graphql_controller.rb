@@ -5,7 +5,7 @@ class GraphqlController < ApplicationController
   # protect_from_forgery with: :null_session
 
   def execute
-    variables = ensure_hash(params[:variables])
+    variables = ensure_hash(params[:variables].merge(userId: current_user&.id))
     query = params[:query]
     operation_name = params[:operationName]
     context = {

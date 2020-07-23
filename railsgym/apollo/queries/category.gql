@@ -5,7 +5,10 @@ query($id: Int!) {
     items {
       id,
       title,
-      createdAt
+      createdAt,
+      user {
+        username
+      }
     }
   }
 }
