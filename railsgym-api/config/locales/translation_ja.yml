@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      item:
+        title: 教材名
+        url: URL

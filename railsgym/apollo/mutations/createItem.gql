@@ -10,6 +10,7 @@ mutation($title: String!, $url: String!, $categoryId: ID!, $userId: ID!) {
     item {
       title
       url
-    }
+    },
+    errors
   }
 }

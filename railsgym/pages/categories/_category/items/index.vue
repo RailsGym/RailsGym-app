@@ -23,9 +23,14 @@
       outlined
       nuxt>
       <v-card-text>
-        <p>
-          {{ ymdhms(item.createdAt) }}
-        </p>
+        <div class="d-flex pb-4">
+          <div>
+            {{ item.user.username }}
+          </div>
+          <div class="ml-auto">
+            {{ ymdhms(item.createdAt) }}
+          </div>
+        </div>
         <h3>{{ item.title }}</h3>
       </v-card-text>
     </v-card>

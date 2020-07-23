@@ -3,7 +3,7 @@ module Mutations
     graphql_name 'CreateItem'
 
     field :item, Types::ItemType, null: true
-    field :result, Boolean, null: true
+    field :errors, [String], null: true
 
     argument :user_id, ID, required: true
     argument :category_id, ID, required: true
@@ -20,7 +20,7 @@ module Mutations
       item.save
       {
         item: item,
-        result: item.errors.blank?
+        errors: item.errors.full_messages
       }
     end
   end
