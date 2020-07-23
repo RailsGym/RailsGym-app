@@ -1,15 +1,19 @@
 <template>
   <v-container>
-    <p>教材投稿</p>
+    <h2 class="page-title">
+      教材投稿
+    </h2>
+    <nuxt-link
+      :to="`/categories/${this.$route.params.category}/items`">
+      教材一覧へ戻る
+    </nuxt-link>
     <v-form>
-      <v-container>
+      <v-container class="mt-10">
         <v-row>
-          <v-col cols="8">
+          <v-col cols="12">
             <v-text-field v-model="newItem.title" label="教材名" required />
           </v-col>
-        </v-row>
-        <v-row>
-          <v-col cols="8">
+          <v-col cols="12">
             <v-text-field v-model="newItem.url" label="URL" required />
           </v-col>
         </v-row>

@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <h2>「{{ category.name }}」 教材一覧</h2>
+    <h2 class="page-title">
+      「{{ category.name }}」 教材一覧
+    </h2>
     <div v-if="$auth.loggedIn" class="d-flex flex-row-reverse mb-6">
       <v-btn
         :to="{ name: 'categories-category-items-new', params: { category: $route.params.category }}"
