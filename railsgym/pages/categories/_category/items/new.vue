@@ -59,7 +59,7 @@ export default {
             categoryId: this.$route.params.category
           }
         })
-        if (res.data.createItem.errors) {
+        if (res.data.createItem.errors.length !== 0) {
           this.errors = res.data.createItem.errors
         } else {
           this.$toast.info('教材が追加されました。')
