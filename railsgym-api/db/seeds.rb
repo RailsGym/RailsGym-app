@@ -13,13 +13,13 @@ category_ruby.items.create(
 category_html = Category.find_by(name: 'HTML&CSS')
 category_html.items.create(
   title: '1冊ですべて身につくHTML & CSSとWebデザイン入門講座',
-  url: 'https://www.amazon.co.jp/1%E5%86%8A%E3%81%A7%E3%81%99%E3%81%B9%E3%81%A6%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%8FHTML-CSS%E3%81%A8Web%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E5%85%A5%E9%96%80%E8%AC%9B%E5%BA%A7-Mana/dp/4797398892/ref=sr_1_1?adgrpid=54089426140&dchild=1&gclid=EAIaIQobChMIgrSnwfXW6gIVSHZgCh2BtAGgEAAYASAAEgLGrPD_BwE&hvadid=338576927225&hvdev=c&hvlocphy=1009307&hvnetw=g&hvqmt=e&hvrand=803956732163326382&hvtargid=kwd-335163263261&hydadcr=15816_11177323&jp-ad-ap=0&keywords=html+%E6%9C%AC&qid=1595079323&sr=8-1&tag=googhydr-22'
+  url: 'https://www.amazon.co.jp/1%E5%86%8A%E3%81%A7%E3%81%99%E3%81%B9%E3%81%A6%E8%BA%AB%E3%81%AB%E3%81%A4%E3%81%8FHTML-CSS%E3%81%A8Web%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E5%85%A5%E9%96%80%E8%AC%9B%E5%BA%A7-Mana/dp/4797398892'
 )
 
 category_git = Category.find_by(name: 'Git')
 category_git.items.create(
   title: 'わかばちゃんと学ぶ Git使い方入門',
-  url: 'https://www.amazon.co.jp/%E3%82%8F%E3%81%8B%E3%81%B0%E3%81%A1%E3%82%83%E3%82%93%E3%81%A8%E5%AD%A6%E3%81%B6-Git%E4%BD%BF%E3%81%84%E6%96%B9%E5%85%A5%E9%96%80%E3%80%88GitHub%E3%80%81Bitbucket%E3%80%81SourceTree%E3%80%89-%E6%B9%8A%E5%B7%9D-%E3%81%82%E3%81%84/dp/4863542178?ref_=ast_slp_dp'
+  url: 'https://www.amazon.co.jp/%E3%82%8F%E3%81%8B%E3%81%B0%E3%81%A1%E3%82%83%E3%82%93%E3%81%A8%E5%AD%A6%E3%81%B6-Git%E4%BD%BF%E3%81%84%E6%96%B9%E5%85%A5%E9%96%80%E3%80%88GitHub%E3%80%81Bitbucket%E3%80%81SourceTree%E3%80%89-%E6%B9%8A%E5%B7%9D-%E3%81%82%E3%81%84/dp/4863542178'
 )
 
 category_design = Category.find_by(name: 'デザイン')

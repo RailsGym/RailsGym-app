@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     async createItem (Item) {
-      console.log(this.$route.params.category)
       try {
         await this.$apollo.mutate({
           mutation: createItem,
