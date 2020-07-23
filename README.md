@@ -31,6 +31,9 @@ http://localhost:3000/
 ### API側
 http://localhost:8080/
 
+### GraphQLの動作確認
+http://localhost:8080/graphiql
+
 ## 開発用コマンド
 
 Makefile に開発用のコマンドが並んでいます

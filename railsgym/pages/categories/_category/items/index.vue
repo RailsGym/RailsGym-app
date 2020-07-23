@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <h2>「{{ category.name }}」 教材一覧</h2>
+    <h2 class="page-title">
+      「{{ category.name }}」 教材一覧
+    </h2>
     <div class="d-flex flex-row-reverse mb-6">
       <v-btn
         :to="{ name: 'categories-category-items-new', params: { category: $route.params.category }}"
@@ -21,7 +23,9 @@
       outlined
       nuxt>
       <v-card-text>
-        <p right>{{ ymdhms(item.createdAt) }}</p>
+        <p right>
+          {{ ymdhms(item.createdAt) }}
+        </p>
         <h3>{{ item.title }}</h3>
       </v-card-text>
     </v-card>

@@ -23,9 +23,9 @@
         </v-btn>
       </v-toolbar>
     </v-card>
-    <v-content>
+    <v-main>
       <nuxt />
-    </v-content>
+    </v-main>
     <v-footer center class="primary">
       <v-layout justify-center>
         <span class="text-white">&copy; RailsGym. All Rights Reserved.</span>
