@@ -1,0 +1,14 @@
+mutation($content: String!, $itemId: ID!, $userId: ID!) {
+  createReview(
+    input:{
+      userId: $userId,
+      itemId: $itemId,
+      content: $content
+    }
+  ){
+    review {
+      content
+    },
+    errors
+  }
+}
