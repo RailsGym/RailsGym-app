@@ -1,0 +1,10 @@
+query($id: ID!) {
+  item(id: $id) {
+    id,
+    title,
+    createdAt,
+    user {
+      username
+    }
+  }
+}

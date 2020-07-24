@@ -17,5 +17,13 @@ module Types
     def category(id:)
       Category.find(id)
     end
+
+    field :item, Types::ItemType, null: false do
+      description '教材詳細'
+      argument :id, ID, required: true, description: 'アイテムID'
+    end
+    def item(id:)
+      Item.find(id)
+    end
   end
 end
