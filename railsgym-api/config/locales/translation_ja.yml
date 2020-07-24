@@ -4,3 +4,5 @@ ja:
       item:
         title: 教材名
         url: URL
+      review:
+        content: レビュー内容
