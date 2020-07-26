@@ -5,22 +5,10 @@
       flat
       tile>
       <v-toolbar dense class="primary" :dark="true">
-        <v-app-bar-nav-icon />
         <v-toolbar-title>
           <router-link to="/" class="toolbar-title" v-text="title" />
         </v-toolbar-title>
         <v-spacer />
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
         <div v-if="loggedIn">
           <v-btn
             color="white"
