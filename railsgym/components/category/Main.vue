@@ -11,6 +11,7 @@
           nuxt
           :to="{ name: 'categories-category-items', params: { category: category.id }}">
           {{ category.name }}
+          {{ category.itemCount }}件
         </v-btn>
       </v-col>
     </v-row>
@@ -23,7 +24,8 @@ import categories from '~/apollo/queries/categories'
 export default {
   data () {
     return {
-      categories: {}
+      categories: {},
+      number: 0
     }
   },
   apollo: {
