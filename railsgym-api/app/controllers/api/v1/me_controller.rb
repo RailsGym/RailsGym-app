@@ -1,5 +1,5 @@
-class Api::V1::MeController < ActionController::API
-  include Knock::Authenticable
+class Api::V1::MeController < ApplicationController
+  before_action :authenticate_user
 
   def show
     render json: current_user
