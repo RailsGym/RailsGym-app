@@ -17,6 +17,10 @@
       {{ ymdhms(item.createdAt) }}
     </p>
     <hr>
+    <v-card
+      v-for="review in reviews">
+      <review />
+    </v-card>
     <div v-if="$auth.loggedIn" class="d-flex flex-row-reverse mt-6 mr-6">
       <v-btn
         :to="{ name: 'categories-category-items-review-new', params: { category: $route.params.category, id: item.id }}"
@@ -39,7 +43,8 @@ export default {
   data () {
     return {
       item: {},
-      user: {}
+      user: {},
+      reviews: [],
     }
   },
   async created () {
@@ -56,6 +61,7 @@ export default {
         })
         this.item = res.data.item
         this.user = res.data.item.user
+        this.reviews = res.data.item.reviews
       } catch (e) {
         console.log(e)
       }
