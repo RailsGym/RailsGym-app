@@ -15,6 +15,14 @@
             text
             dark
             @click="logout()">
+            {{ $auth.user.username }}
+          </v-btn>
+          <v-btn
+            outlined
+            color="white"
+            text
+            dark
+            @click="logout()">
             ログアウト
           </v-btn>
         </div>
