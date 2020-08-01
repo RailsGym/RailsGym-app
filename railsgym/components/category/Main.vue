@@ -11,7 +11,7 @@
           nuxt
           :to="{ name: 'categories-category-items', params: { category: category.id }}">
           {{ category.name }}
-          {{ category.itemCount }}件
+          <span class="text-body-1 ml-2">{{ category.itemCount }}件</span>
         </v-btn>
       </v-col>
     </v-row>
