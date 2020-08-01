@@ -52,6 +52,7 @@
             color="success"
             :to="{ name: 'categories-category-items-review-edit', params: { category: $route.params.category, id: review.id }}">編集</v-btn>
           <v-btn
+            @click="deleteReview(review)"
             color="red"
             dark>
             削除</v-btn>
@@ -63,6 +64,7 @@
 
 <script>
 import item from '~/apollo/queries/item'
+import deleteReview from '~/apollo/mutations/deleteReview'
 
 export default {
   data () {
@@ -89,6 +91,24 @@ export default {
         this.reviews = res.data.item.reviews
       } catch (e) {
         console.log(e)
+      }
+    },
+    async deleteReview (review) {
+      try {
+        console.log('=========================')
+        console.log(review.id)
+        console.log('=========================')
+        await this.$apollo.mutate({
+          mutation: deleteReview,
+          variables: {
+            id: review.id
+          },
+          refetchQueries: [{
+            query: item
+          }]
+        })
+      } catch (e) {
+        window.console.log(e)
       }
     }
   }
