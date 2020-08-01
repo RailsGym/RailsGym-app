@@ -29,7 +29,9 @@
         </v-icon>
       </v-btn>
     </div>
-    <h3 class="mt-4 mb-4">レビュー一覧</h3>
+    <h3 class="mt-4 mb-4">
+      レビュー一覧
+    </h3>
     <v-card
       v-for="review in reviews"
       :key="review.id"
@@ -44,17 +46,20 @@
             {{ ymdhms(review.createdAt) }}
           </div>
         </div>
-        <p v-html="nl2br(review.content)"/>
+        <p v-html="nl2br(review.content)" />
       </v-card-text>
-      <div class="d-flex pb-4 pr-4">
+      <div v-if="$auth.loggedIn" class="d-flex pb-4 pr-4">
         <div class="ml-auto">
           <v-btn
             color="success"
-            :to="{ name: 'categories-category-items-review-edit', params: { category: $route.params.category, id: review.id }}">編集</v-btn>
+            :to="{ name: 'categories-category-items-review-edit', params: { category: $route.params.category, id: review.id }}">
+            編集
+          </v-btn>
           <v-btn
             color="red"
             dark>
-            削除</v-btn>
+            削除
+          </v-btn>
         </div>
       </div>
     </v-card>
@@ -74,6 +79,9 @@ export default {
   },
   async created () {
     await this.fetchItem()
+    console.log(this.$auth.loggedIn)
+    console.log(this.$auth)
+    console.log(this.$auth.user)
   },
   methods: {
     async fetchItem () {
