@@ -13,6 +13,13 @@
           <v-btn
             color="white"
             text
+            dark>
+            {{ $auth.user.username }}
+          </v-btn>
+          <v-btn
+            outlined
+            color="white"
+            text
             dark
             @click="logout()">
             ログアウト
