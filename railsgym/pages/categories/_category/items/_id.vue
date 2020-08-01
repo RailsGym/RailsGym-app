@@ -102,8 +102,15 @@ export default {
           mutation: deleteReview,
           variables: {
             id: review.id
-          }
+          },
+          refetchQueries: [{
+            query: item,
+            variables: {
+              id: this.$route.params.id
+            }
+          }]
         })
+        this.fetchItem()
       } catch (e) {
         window.console.log(e)
       }
