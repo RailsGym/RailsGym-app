@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h2 class="page-title">
-      「{{ category.name }}」 教材一覧
+      「{{ category.name }}」 教材一覧 {{ category.items.length }} 件
     </h2>
     <div v-if="$auth.loggedIn" class="d-flex flex-row-reverse mb-6">
       <v-btn
@@ -43,7 +43,9 @@ import category from '~/apollo/queries/category'
 export default {
   data () {
     return {
-      category: {}
+      category: {
+        items: []
+      }
     }
   },
   async created () {
