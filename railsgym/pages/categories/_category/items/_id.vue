@@ -48,7 +48,7 @@
         </div>
         <p v-html="nl2br(review.content)" />
       </v-card-text>
-      <div v-if="$auth.loggedIn" class="d-flex pb-4 pr-4">
+      <div v-if="$auth.loggedIn && $auth.user.id == review.user.id" class="d-flex pb-4 pr-4">
         <div class="ml-auto">
           <v-btn
             color="success"
@@ -79,9 +79,6 @@ export default {
   },
   async created () {
     await this.fetchItem()
-    console.log(this.$auth.loggedIn)
-    console.log(this.$auth)
-    console.log(this.$auth.user)
   },
   methods: {
     async fetchItem () {
