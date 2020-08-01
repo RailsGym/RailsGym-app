@@ -6,5 +6,13 @@ query($id: ID!) {
     user {
       username
     }
+    reviews {
+      content
+      createdAt
+      user {
+        id
+        username
+      }
+    }
   }
 }

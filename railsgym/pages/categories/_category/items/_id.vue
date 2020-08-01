@@ -29,6 +29,40 @@
         </v-icon>
       </v-btn>
     </div>
+    <h3 class="mt-4 mb-4">
+      レビュー一覧
+    </h3>
+    <v-card
+      v-for="review in reviews"
+      :key="review.id"
+      class="mb-4"
+      outlined>
+      <v-card-text>
+        <div class="d-flex pb-4">
+          <div>
+            {{ review.user.username }}
+          </div>
+          <div class="ml-auto">
+            {{ ymdhms(review.createdAt) }}
+          </div>
+        </div>
+        <p v-html="nl2br(review.content)" />
+      </v-card-text>
+      <div v-if="$auth.loggedIn && $auth.user.id == review.user.id" class="d-flex pb-4 pr-4">
+        <div class="ml-auto">
+          <v-btn
+            color="success"
+            :to="{ name: 'categories-category-items-review-edit', params: { category: $route.params.category, id: review.id }}">
+            編集
+          </v-btn>
+          <v-btn
+            color="red"
+            dark>
+            削除
+          </v-btn>
+        </div>
+      </div>
+    </v-card>
   </v-container>
 </template>
 
@@ -39,7 +73,8 @@ export default {
   data () {
     return {
       item: {},
-      user: {}
+      user: {},
+      reviews: []
     }
   },
   async created () {
@@ -56,6 +91,7 @@ export default {
         })
         this.item = res.data.item
         this.user = res.data.item.user
+        this.reviews = res.data.item.reviews
       } catch (e) {
         console.log(e)
       }
