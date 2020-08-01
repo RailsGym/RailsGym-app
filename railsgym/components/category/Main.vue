@@ -24,8 +24,7 @@ import categories from '~/apollo/queries/categories'
 export default {
   data () {
     return {
-      categories: {},
-      number: 0
+      categories: {}
     }
   },
   apollo: {
