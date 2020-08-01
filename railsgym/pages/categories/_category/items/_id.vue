@@ -94,18 +94,15 @@ export default {
       }
     },
     async deleteReview (review) {
+      if (!confirm('削除します。本当によろしいですか？')) {
+        return
+      }
       try {
-        console.log('=========================')
-        console.log(review.id)
-        console.log('=========================')
         await this.$apollo.mutate({
           mutation: deleteReview,
           variables: {
             id: review.id
-          },
-          refetchQueries: [{
-            query: item
-          }]
+          }
         })
       } catch (e) {
         window.console.log(e)
