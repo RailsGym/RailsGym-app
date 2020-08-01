@@ -17,9 +17,17 @@
       {{ ymdhms(item.createdAt) }}
     </p>
     <hr>
-    <v-card
-      v-for="review in reviews">
-      <review />
+    <v-card v-for="review in reviews" :key="review.id">
+      <v-btn
+        color="success"
+        :to="{ name: 'categories-category-items-review-edit', params: { category: $route.params.category, id: review.id }}">編集</v-btn>
+      <v-btn
+        color="red"
+        dark>
+        削除</v-btn>
+      <p>{{ review.user.username }}</p>
+      <p v-html="nl2br(review.content)" />
+      <p>{{ ymdhms(review.createdAt) }}</p>
     </v-card>
     <div v-if="$auth.loggedIn" class="d-flex flex-row-reverse mt-6 mr-6">
       <v-btn
@@ -44,7 +52,7 @@ export default {
     return {
       item: {},
       user: {},
-      reviews: [],
+      reviews: []
     }
   },
   async created () {
