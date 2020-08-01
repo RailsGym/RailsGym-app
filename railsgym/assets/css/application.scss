@@ -3,37 +3,37 @@
 // Modules
 // @import 'modules/common';
 
-.v-main__wrap{
-  .container{
+.v-main__wrap {
+  .container {
     padding: 12px 5rem;
   }
 }
 
-.v-toolbar__title{
+.v-toolbar__title {
   .toolbar-title {
     color: white;
     text-decoration: none;
   }
 }
 
-.text-white{
+.text-white {
   color: white;
 }
 
-.text-center{
+.text-center {
   text-align: center;
 }
 
-.box-align-center{
+.box-align-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.row{
-  .col{
-    .v-btn{
-      &.category-box{
+.row {
+  .col {
+    .v-btn {
+      &.category-box {
         font-size: 1.5rem;
         padding: 20px;
         text-align: center;
@@ -47,6 +47,10 @@
   }
 }
 
-.page-title{
+.page-title {
   margin: 1rem 0;
+}
+
+span {
+  text-transform: none;
 }

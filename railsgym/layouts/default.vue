@@ -13,8 +13,7 @@
           <v-btn
             color="white"
             text
-            dark
-            @click="logout()">
+            dark>
             {{ $auth.user.username }}
           </v-btn>
           <v-btn
