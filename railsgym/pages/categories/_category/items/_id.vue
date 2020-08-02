@@ -128,6 +128,7 @@ export default {
             id: item.id
           }
         })
+        this.$toast.info('教材が削除されました。')
         this.$router.push(`/categories/${this.$route.params.category}/items`)
       } catch (e) {
         window.console.log(e)
