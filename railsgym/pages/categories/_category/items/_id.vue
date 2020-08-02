@@ -107,7 +107,7 @@ export default {
           mutation: createStock,
           variables: {
             userId: this.$auth.user.id,
-            itemId: this.$route.params.item_id
+            itemId: this.$route.params.id
           }
         })
         if (res.data.createStock.errors.length !== 0) {
