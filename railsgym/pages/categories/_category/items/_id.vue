@@ -8,8 +8,8 @@
       :to="`/categories/${this.$route.params.category}/items`">
       教材一覧へ戻る
     </nuxt-link>
-    <span @click="createStock" class="group pa-2 teal stock-icon">
-    <v-icon medium dark>folder_open</v-icon>
+    <span v-if="$auth.loggedIn" @click="createStock" class="group pa-2 teal stock-icon">
+      <v-icon medium dark>folder_open</v-icon>
     </span>
     </div>
     <h3 class="mt-7">
