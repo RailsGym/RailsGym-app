@@ -2,8 +2,10 @@ query($id: ID!) {
   item(id: $id) {
     id,
     title,
+    url,
     createdAt,
     user {
+      id
       username
     }
     reviews {

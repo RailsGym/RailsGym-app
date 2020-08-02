@@ -1,0 +1,10 @@
+mutation($id: ID!, $title: String!, $url: String!) {
+  updateItem( input: { id: $id, title: $title, url: $url }) {
+    item {
+      id
+      title
+      url
+    },
+    errors
+  }
+}
