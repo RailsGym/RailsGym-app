@@ -3,11 +3,15 @@
     <h2 class="page-title">
       教材詳細
     </h2>
+    <div>
     <nuxt-link
       :to="`/categories/${this.$route.params.category}/items`">
       教材一覧へ戻る
     </nuxt-link>
+    <span @click="createStock" class="group pa-2 teal stock-icon">
     <v-icon medium dark>folder_open</v-icon>
+    </span>
+    </div>
     <h3 class="mt-7">
       投稿者：{{ user.username }}
     </h3>
@@ -96,6 +100,19 @@ export default {
       } catch (e) {
         console.log(e)
       }
+    },
+    async createStock() {
+      // try {
+      //   const res = await this.$apollo.mutate({
+      //     mutation: createStock,
+      //     variables:{
+      //       user_id:
+      //       item_id:
+      //     }
+      //     })
+      // } catch (e) {
+      //   console.log(e)
+      // }
     }
   }
 }
