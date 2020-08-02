@@ -8,7 +8,7 @@
       :to="`/categories/${this.$route.params.category}/items`">
       教材一覧へ戻る
     </nuxt-link>
-    <span v-if="$auth.loggedIn" @click="createStock" class="group pa-2 teal stock-icon">
+    <span v-if="$auth.loggedIn && !stocked" @click="createStock" class="group pa-2 teal stock-icon">
       <v-icon medium dark>folder_open</v-icon>
     </span>
     </div>
@@ -79,7 +79,8 @@ export default {
     return {
       item: {},
       user: {},
-      reviews: []
+      reviews: [],
+      stocked: false
     }
   },
   async created () {
@@ -114,6 +115,7 @@ export default {
           this.errors = res.data.createStock.errors
         } else {
           this.$toast.info('ストックしました。')
+          this.stocked = true
         }
       } catch (e) {
         console.log(e)
