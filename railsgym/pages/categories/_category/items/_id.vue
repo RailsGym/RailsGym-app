@@ -10,9 +10,29 @@
     <h3 class="mt-7">
       投稿者：{{ user.username }}
     </h3>
+    <div v-if="$auth.loggedIn && $auth.user.id == user.id" class="d-flex pb-4 pr-4">
+      <div class="ml-auto">
+        <v-btn
+          color="success"
+          :to="{ name: 'categories-category-items-item-edit', params: { category: $route.params.category, item: item.id }}">
+          編集
+        </v-btn>
+        <v-btn
+          color="red"
+          dark
+          @click="deleteItem(item)">
+          削除
+        </v-btn>
+      </div>
+    </div>
     <h2 class="my-3">
       {{ item.title }}
     </h2>
+    <a
+      class="my-3"
+      :href="item.url">
+      {{ item.url }}
+    </a>
     <p right>
       {{ ymdhms(item.createdAt) }}
     </p>
@@ -68,6 +88,7 @@
 
 <script>
 import item from '~/apollo/queries/item'
+import deleteItem from '~/apollo/mutations/deleteItem'
 
 export default {
   data () {
@@ -94,6 +115,23 @@ export default {
         this.reviews = res.data.item.reviews
       } catch (e) {
         console.log(e)
+      }
+    },
+    async deleteItem (item) {
+      if (!confirm('削除します。本当によろしいですか？')) {
+        return
+      }
+      try {
+        await this.$apollo.mutate({
+          mutation: deleteItem,
+          variables: {
+            id: item.id
+          }
+        })
+        this.$toast.info('教材が削除されました。')
+        this.$router.push(`/categories/${this.$route.params.category}/items`)
+      } catch (e) {
+        window.console.log(e)
       }
     }
   }
