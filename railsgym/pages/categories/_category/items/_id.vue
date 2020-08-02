@@ -73,7 +73,7 @@
 
 <script>
 import item from '~/apollo/queries/item'
-
+import createStock from '~/apollo/mutations/createStock'
 export default {
   data () {
     return {
@@ -101,18 +101,23 @@ export default {
         console.log(e)
       }
     },
-    async createStock() {
-      // try {
-      //   const res = await this.$apollo.mutate({
-      //     mutation: createStock,
-      //     variables:{
-      //       user_id:
-      //       item_id:
-      //     }
-      //     })
-      // } catch (e) {
-      //   console.log(e)
-      // }
+    async createStock () {
+      try {
+        const res = await this.$apollo.mutate({
+          mutation: createStock,
+          variables: {
+            userId: this.$auth.user.id,
+            itemId: this.$route.params.item_id
+          }
+        })
+        if (res.data.createStock.errors.length !== 0) {
+          this.errors = res.data.createStock.errors
+        } else {
+          this.$toast.info('ストックしました。')
+        }
+      } catch (e) {
+        console.log(e)
+      }
     }
   }
 }
