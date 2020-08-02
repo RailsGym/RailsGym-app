@@ -81,7 +81,6 @@ export default {
         if (res.data.updateItem.errors.length !== 0) {
           this.errors = res.data.updateItem.errors
         } else {
-          console.log('ok■■■■■■')
           this.$toast.info('教材が編集されました。')
           this.$router.go(-1)
         }

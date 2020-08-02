@@ -11,6 +11,8 @@ module Mutations
 
     def resolve(**args)
       item = Item.find(args[:id])
+      {
+        item: item,
         errors: item.errors.full_messages
       }
     end
