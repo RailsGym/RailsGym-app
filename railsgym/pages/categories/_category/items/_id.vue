@@ -7,6 +7,7 @@
       :to="`/categories/${this.$route.params.category}/items`">
       教材一覧へ戻る
     </nuxt-link>
+    <v-icon medium dark>folder_open</v-icon>
     <h3 class="mt-7">
       投稿者：{{ user.username }}
     </h3>

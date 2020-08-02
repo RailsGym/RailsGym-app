@@ -1,0 +1,17 @@
+query($id: ID!) {
+  user(id: $id) {
+    id,
+    title,
+    createdAt,
+    user {
+      username
+    }
+    reviews {
+      content
+      createdAt
+      user {
+        username
+      }
+    }
+  }
+}
