@@ -6,8 +6,7 @@ mutation($itemId: ID!, $userId: ID!) {
     }
   ){
     stock {
-      userId
-      itemId
+      id
     },
     errors
   }
