@@ -1,0 +1,5 @@
+query($itemId: ID!, $userId: ID!) {
+  stock(itemId: $itemId, userId: $userId) {
+    id
+  }
+}

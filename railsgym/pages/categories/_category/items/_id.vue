@@ -8,16 +8,23 @@
       :to="`/categories/${this.$route.params.category}/items`">
       教材一覧へ戻る
     </nuxt-link>
-    <span v-if="$auth.loggedIn && !stocked" @click="createStock" class="group pa-2 teal stock-icon">
-      <v-icon medium dark>folder_open</v-icon>
-    </span>
     </div>
     <h3 class="mt-7">
       投稿者：{{ user.username }}
     </h3>
-    <h2 class="my-3">
-      {{ item.title }}
-    </h2>
+    <div class="d-flex pb-4 pr-4">
+      <h2 class="my-3">
+        {{ item.title }}
+      </h2>
+      <div class="ml-auto">
+        <span v-if="$auth.loggedIn && !stock.id" @click="createStock" class="group pa-2 blue stock-icon">
+          <v-icon medium dark>folder_open</v-icon>
+        </span>
+        <span v-if="$auth.loggedIn && stock.id" @click="deleteStock" class="group pa-2 blue stock-icon">
+          <v-icon medium dark>folder</v-icon>
+        </span>
+      </div>
+    </div>
     <p right>
       {{ ymdhms(item.createdAt) }}
     </p>
@@ -73,18 +80,24 @@
 
 <script>
 import item from '~/apollo/queries/item'
+import stock from '~/apollo/queries/stock'
 import createStock from '~/apollo/mutations/createStock'
+import deleteStock from '~/apollo/mutations/deleteStock'
+
 export default {
   data () {
     return {
       item: {},
       user: {},
       reviews: [],
-      stocked: false
+      stock: { id: null }
     }
   },
   async created () {
     await this.fetchItem()
+    if (this.$auth.loggedIn) {
+      await this.fetchStock()
+    }
   },
   methods: {
     async fetchItem () {
@@ -102,6 +115,19 @@ export default {
         console.log(e)
       }
     },
+    async fetchStock () {
+      try {
+        const res = await this.$apollo.query({
+          query: stock,
+          variables: {
+            itemId: this.$route.params.id
+          }
+        })
+        this.stock = res.data.stock
+      } catch (e) {
+        console.log(e)
+      }
+    },
     async createStock () {
       try {
         const res = await this.$apollo.mutate({
@@ -115,7 +141,25 @@ export default {
           this.errors = res.data.createStock.errors
         } else {
           this.$toast.info('ストックしました。')
-          this.stocked = true
+          this.stock = res.data.createStock.stock
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async deleteStock () {
+      try {
+        const res = await this.$apollo.mutate({
+          mutation: deleteStock,
+          variables: {
+            id: this.stock.id
+          }
+        })
+        if (res.data.deleteStock.errors.length !== 0) {
+          this.errors = res.data.deleteStock.errors
+        } else {
+          this.$toast.info('ストックをはずしました。')
+          this.stock = { id: null }
         }
       } catch (e) {
         console.log(e)

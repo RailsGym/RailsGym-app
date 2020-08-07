@@ -25,5 +25,14 @@ module Types
     def item(id:)
       Item.find(id)
     end
+
+    field :stock, Types::StockType, null: false do
+      description 'ストック詳細'
+      argument :itemId, ID, required: true, description: 'アイテムID'
+      argument :userId, ID, required: true, description: 'ユーザID'
+    end
+    def stock(itemId:, userId:)
+      Stock.where(item_id: itemId, user_id: userId).first
+    end
   end
 end
