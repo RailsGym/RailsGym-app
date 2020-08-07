@@ -158,7 +158,7 @@ export default {
         if (res.data.deleteStock.errors.length !== 0) {
           this.errors = res.data.deleteStock.errors
         } else {
-          this.$toast.info('ストックをはずしました。')
+          this.$toast.info('ストックからはずしました。')
           this.stock = { id: null }
         }
       } catch (e) {
