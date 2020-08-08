@@ -64,7 +64,7 @@
         <div class="ml-auto">
           <v-btn
             color="success"
-            :to="{ name: 'categories-category-items-review-edit', params: { category: $route.params.category, id: review.id }}">
+            :to="{ name: 'categories-category-items-review-review-edit', params: { category: $route.params.category, review: review.id }}">
             編集
           </v-btn>
           <v-btn

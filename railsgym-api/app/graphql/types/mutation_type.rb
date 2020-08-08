@@ -6,6 +6,7 @@ module Types
     field :create_task, mutation: Mutations::CreateTask
     field :create_item, mutation: Mutations::CreateItem
     field :create_review, mutation: Mutations::CreateReview
+    field :update_review, mutation: Mutations::UpdateReview
     field :create_stock, mutation: Mutations::CreateStock
     field :delete_stock, mutation: Mutations::DeleteStock
   end
