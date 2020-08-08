@@ -62,7 +62,7 @@ export default {
       local: {
         endpoints: {
           login: { url: 'user_token', method: 'post', propertyName: 'jwt' },
-          user: false,
+          user: { url: 'api/v1/me', method: 'get', propertyName: false },
           logout: false
         }
       }

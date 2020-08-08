@@ -1,0 +1,8 @@
+mutation($id: ID!) {
+  deleteStock( input: { id: $id }) {
+    stock {
+      id
+    },
+    errors
+  }
+}

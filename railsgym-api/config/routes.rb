@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   end
 
   post "/graphql", to: "graphql#execute"
+
+  namespace :api do
+    namespace :v1 do
+      get 'me', to: 'me#show'
+    end
+  end
 end
