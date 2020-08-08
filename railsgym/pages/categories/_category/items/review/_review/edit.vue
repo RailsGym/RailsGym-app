@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h2 class="page-title">
-      レビュー投稿
+      レビュー編集
     </h2>
     <nuxt-link
       :to="`/categories/${this.$route.params.category}/items/${review.item.id}`">
