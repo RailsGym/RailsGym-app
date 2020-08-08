@@ -3,7 +3,7 @@ module Mutations
     graphql_name 'DeleteReview'
 
     field :review, Types::ReviewType, null: true
-    field :result, Boolean, null: true
+    field :errors, [String], null: true
 
     argument :id, ID, required: true
 
@@ -11,7 +11,8 @@ module Mutations
       review = Review.find(args[:id])
       review.destroy
       {
-          review: review
+          review: review,
+          errors: review.errors.full_messages
       }
     end
   end
