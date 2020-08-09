@@ -1,0 +1,13 @@
+mutation($itemId: ID!, $userId: ID!) {
+  createStock(
+    input:{
+      userId: $userId,
+      itemId: $itemId,
+    }
+  ){
+    stock {
+      id
+    },
+    errors
+  }
+}
