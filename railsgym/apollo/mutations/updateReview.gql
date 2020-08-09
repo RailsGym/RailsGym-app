@@ -1,0 +1,9 @@
+mutation($id: ID!, $content: String!) {
+  updateReview( input: { id: $id, content: $content }) {
+    review {
+      id
+      content
+    },
+    errors
+  }
+}

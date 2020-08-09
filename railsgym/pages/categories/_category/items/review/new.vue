@@ -29,6 +29,7 @@
 
 <script>
 import Errors from '@/components/shared/Errors'
+import item from '~/apollo/queries/item'
 import createReview from '~/apollo/mutations/createReview'
 
 export default {
@@ -52,7 +53,13 @@ export default {
           variables: {
             content: reviewContent,
             itemId: this.$route.params.id
-          }
+          },
+          refetchQueries: [{
+            query: item,
+            variables: {
+              id: this.$route.params.id
+            }
+          }]
         })
         if (res.data.createReview.errors.length !== 0) {
           this.errors = res.data.createReview.errors

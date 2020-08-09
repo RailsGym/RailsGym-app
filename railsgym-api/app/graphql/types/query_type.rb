@@ -26,6 +26,14 @@ module Types
       Item.find(id)
     end
 
+    field :review, Types::ReviewType, null: false do
+      description 'レビュー'
+      argument :id, ID, required: true, description: 'レビューID'
+    end
+    def review(id:)
+      Review.find(id)
+    end
+
     field :stock, Types::StockType, null: false do
       description 'ストック詳細'
       argument :itemId, ID, required: true, description: 'アイテムID'

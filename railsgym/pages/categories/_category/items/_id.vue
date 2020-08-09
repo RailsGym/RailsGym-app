@@ -8,7 +8,7 @@
       教材一覧へ戻る
     </nuxt-link>
     <h3 class="mt-7">
-      投稿者：{{ user.username }}
+      投稿者：{{ item.user.username }}
     </h3>
     <div class="d-flex pb-4 pr-4">
       <h2 class="my-3">
@@ -43,7 +43,7 @@
       レビュー一覧
     </h3>
     <v-card
-      v-for="review in reviews"
+      v-for="review in item.reviews"
       :key="review.id"
       class="mb-4"
       outlined>
@@ -62,10 +62,11 @@
         <div class="ml-auto">
           <v-btn
             color="success"
-            :to="{ name: 'categories-category-items-review-edit', params: { category: $route.params.category, id: review.id }}">
+            :to="{ name: 'categories-category-items-review-review-edit', params: { category: $route.params.category, review: review.id }}">
             編集
           </v-btn>
           <v-btn
+            @click="deleteReview(review)"
             color="red"
             dark>
             削除
@@ -81,38 +82,32 @@ import item from '~/apollo/queries/item'
 import stock from '~/apollo/queries/stock'
 import createStock from '~/apollo/mutations/createStock'
 import deleteStock from '~/apollo/mutations/deleteStock'
+import deleteReview from '~/apollo/mutations/deleteReview'
 
 export default {
   data () {
     return {
-      item: {},
-      user: {},
-      reviews: [],
+      item: {
+        user: {},
+        reviews: []
+      },
       stock: { id: null }
     }
   },
+  apollo: {
+    item: {
+      query: item,
+      variables () {
+        return { id: this.$route.params.id }
+      }
+    }
+  },
   async created () {
-    await this.fetchItem()
     if (this.$auth.loggedIn) {
       await this.fetchStock()
     }
   },
   methods: {
-    async fetchItem () {
-      try {
-        const res = await this.$apollo.query({
-          query: item,
-          variables: {
-            id: this.$route.params.id
-          }
-        })
-        this.item = res.data.item
-        this.user = res.data.item.user
-        this.reviews = res.data.item.reviews
-      } catch (e) {
-        console.log(e)
-      }
-    },
     async fetchStock () {
       try {
         const res = await this.$apollo.query({
@@ -161,6 +156,32 @@ export default {
         }
       } catch (e) {
         console.log(e)
+      }
+    },
+    async deleteReview (review) {
+      if (!confirm('削除します。本当によろしいですか？')) {
+        return
+      }
+      try {
+        const res = await this.$apollo.mutate({
+          mutation: deleteReview,
+          variables: {
+            id: review.id
+          },
+          refetchQueries: [{
+            query: item,
+            variables: {
+              id: this.$route.params.id
+            }
+          }]
+        })
+        if (res.data.deleteReview.errors.length !== 0) {
+          this.$toast.error(res.data.deleteReview.errors)
+        } else {
+          this.$toast.info('レビューを削除しました。')
+        }
+      } catch (e) {
+        window.console.log(e)
       }
     }
   }
