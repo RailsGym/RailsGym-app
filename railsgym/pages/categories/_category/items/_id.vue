@@ -3,12 +3,10 @@
     <h2 class="page-title">
       教材詳細
     </h2>
-    <div>
     <nuxt-link
       :to="`/categories/${this.$route.params.category}/items`">
       教材一覧へ戻る
     </nuxt-link>
-    </div>
     <h3 class="mt-7">
       投稿者：{{ user.username }}
     </h3>
